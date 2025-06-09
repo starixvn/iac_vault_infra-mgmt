@@ -1,0 +1,13 @@
+---
+include:
+  ## Workflows
+  - project: 'iac/core-ci'
+    file: '/templates/workflows/dynamic.yml'
+    ref: v2.0.0
+  - project: 'iac/core-ci'
+    file: '/templates/workflows/tag-deploy.yml'
+    ref: v2.0.0
+
+variables:
+  DEBUG: 0
+  AUTO_APPPROVE: false
