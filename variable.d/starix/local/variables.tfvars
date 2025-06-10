@@ -6,12 +6,13 @@ vault_address = "https://vault.nexdev.net"
 CIDR_OFFICE                 = ["10.0.0.0/8"]
 application_aws_assume_role = "arn:aws:iam::584102114761:role/lumi-local-vault-role-v1" #required
 
+# 3061: https://gitlab.nexdev.net/iac/eac
 # 3083: https://gitlab.nexdev.net/iac/kubernetes
 # 3096: https://gitlab.nexdev.net/iac/opensearch
 # 3110: https://gitlab.nexdev.net/iac/rancher
 # 3117: https://gitlab.nexdev.net/iac/vault/dba-policy-mgmt
 # 3118: https://gitlab.nexdev.net/iac/vault/infra-mgmt
-bound_gitlab_project_id = "3083,3096,3110,3117,3118"
+bound_gitlab_project_id = "3061,3083,3096,3110,3117,3118"
 bound_gitlab_ref        = "main,dev,aws,local,deploy_aws_*,deploy_*_local"
 bound_gitlab_ref_type   = "branch,tag"
 # bound_gitlab_ref        = "*"
