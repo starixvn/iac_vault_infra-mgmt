@@ -165,6 +165,36 @@ vault_users = [
     name = "kos.nguyen",
     team = "legion",
   },
+
+  #### WABISABI ####
+  {
+    name = "long.luu",
+    team = "wabisabi",
+  },
+  {
+    name = "adam.tran",
+    team = "wabisabi",
+  },
+  {
+    name = "tony.nguyen",
+    team = "wabisabi",
+  },
+  {
+    name = "terry.nguyen",
+    team = "wabisabi",
+  },
+  {
+    name = "jonathan.doan",
+    team = "wabisabi",
+  },
+  {
+    name = "aida.tran",
+    team = "wabisabi",
+  },
+  {
+    name = "lando.vu",
+    team = "wabisabi",
+  },
 ]
 
 vault_users_readonly = []
