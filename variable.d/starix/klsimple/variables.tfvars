@@ -33,6 +33,10 @@ vault_mount = [
     path = "nexus",
     type = "kv-v2"
   },
+  {
+    path = "wabisabi",
+    type = "kv-v2"
+  },
 
 ]
 ########### Policy
