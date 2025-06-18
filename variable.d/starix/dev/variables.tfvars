@@ -13,24 +13,28 @@ bound_gitlab_ref_type   = "branch,tag"
 vault_mount = [
   {
     path = "nexops",
-    type = "kv-v2"
+    type = "kv-v2",
   },
   {
     path = "pontus",
-    type = "kv-v2"
+    type = "kv-v2",
   },
   {
     path = "rome",
-    type = "kv-v2"
+    type = "kv-v2",
   },
   {
     path = "olympus",
-    type = "kv-v2"
+    type = "kv-v2",
   },
   {
     path = "nexus",
-    type = "kv-v2"
+    type = "kv-v2",
   },
+  {
+    path = "wabisabi",
+    type = "kv-v2",
+  }
 ]
 ########### Policy
 polices = [
@@ -58,19 +62,9 @@ roles = [
       "10.19.10.0/24"
     ]
   },
-
 ]
 
 ########### AUTH ROLE for Kubernetes auth method ############
-kubernetes_auth_role = [
-  {
-    role_name    = "vault-snapshot",
-    sa_name      = "vault-snapshot",
-    sa_namespace = "vault-dev",
-    policies     = ["raft-snapshot", ],
-  },
-]
-
 kube_auth_backends = [
   {
     path = "kubernetes",
@@ -87,12 +81,36 @@ kube_auth_backends = [
 
 #####################################
 vault_team = [
-  "nexops",
-  "pontus",
-  "rome",
-  "olympus",
-  "nexus",
-  "legion",
+  {
+    name = "nexops",
+  },
+  {
+    name = "pontus",
+  },
+  {
+    name = "rome",
+  },
+  {
+    name = "olympus",
+  },
+  {
+    name = "nexus",
+  },
+  {
+    name = "legion",
+  },
+  {
+    name              = "wabisabi",
+    ex_admin_policies = ["db_reviewer", ]
+    # ex_ro_policies = "",
+  },
+  # "nexops",
+  # "pontus",
+  # "rome",
+  # "olympus",
+  # "nexus",
+  # "legion",
+  # "wabisabi",
 ]
 
 ## Vault Admin Users
@@ -106,6 +124,10 @@ vault_admin_users = [
 ]
 ## ALL Vault Users
 vault_users = [
+  {
+    name = "wasa.user",
+    team = "wabisabi",
+  },
   {
     name = "troy.vo",
     team = "nexops",

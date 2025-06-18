@@ -1,28 +1,29 @@
 
 ## https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/policy
 resource "vault_policy" "readonly" {
-  for_each = toset(var.vault_team)
+  for_each = { for entry in var.vault_team : "${entry.name}" => entry }
   name     = "${each.key}/readonly"
-  policy   = <<EOT
-## Allow to list metadata under secret/
-## so that UI displays the list of base secret
-## User will not be allow to deeper that one level
-path "${each.key}/*" {
-  capabilities = ["list", "read"]
-}
-EOT
+  policy = templatefile("${path.module}/group-policies/default/readonly.hcl.tpl", {
+    team = "${each.key}"
+  })
 }
 
-## https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/policy
+# https://registry.terraform.io/providers/hashicorp/vault/latest/docs/resources/policy
 resource "vault_policy" "admin" {
-  for_each = toset(var.vault_team)
+  for_each = { for entry in var.vault_team : "${entry.name}" => entry }
   name     = "${each.key}/admin"
-  policy   = <<EOT
-## Allow to list metadata under secret/
-## so that UI displays the list of base secret
-## User will not be allow to deeper that one level
-path "${each.key}/*" {
-  capabilities = ["create", "read", "update", "delete", "list"]
+  policy = templatefile("${path.module}/group-policies/default/admin.hcl.tpl", {
+    team = "${each.key}"
+  })
 }
-EOT
+
+resource "vault_policy" "ex_admin_policies" {
+  for_each = { for entry in local.ex_admin_policies : "${entry.policy_id}" => entry }
+  name     = each.value.policy_name
+  policy   = file(each.value.policy_path)
 }
+
+
+# resource "vault_policy" "ex_admin_policy" {
+#   for_each = { for entry in var.vault_team : "${entry.name"}
+# }
