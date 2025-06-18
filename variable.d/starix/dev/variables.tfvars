@@ -104,13 +104,6 @@ vault_team = [
     ex_admin_policies = ["db_reviewer", ]
     # ex_ro_policies = "",
   },
-  # "nexops",
-  # "pontus",
-  # "rome",
-  # "olympus",
-  # "nexus",
-  # "legion",
-  # "wabisabi",
 ]
 
 ## Vault Admin Users
