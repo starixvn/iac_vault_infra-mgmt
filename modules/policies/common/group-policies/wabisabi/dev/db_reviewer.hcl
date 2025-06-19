@@ -7,7 +7,7 @@ path "pontus/data/database/alias" {
 }
 
 path "pontus/data/database/credentials" {
-  capabilities = ["list"]
+  capabilities = ["read", "list"]
 }
 
 path "sys/policies/acl/p-mssql-wabi" {
