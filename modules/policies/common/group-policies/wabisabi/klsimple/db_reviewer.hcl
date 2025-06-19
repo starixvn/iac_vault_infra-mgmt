@@ -6,7 +6,7 @@ path "pontus/data/database/alias" {
   capabilities = ["read", "list"]
 }
 
-path "pontus/data/database/credentials" {
+path "pontus/metadata/database/credentials" {
   capabilities = ["list"]
 }
 
