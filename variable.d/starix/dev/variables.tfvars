@@ -8,7 +8,7 @@ bound_gitlab_project_id = "3117,3118"
 bound_gitlab_ref        = "main,dev,deploy_*_dev"
 bound_gitlab_ref_type   = "branch,tag"
 
-#############
+############
 ########### mount
 vault_mount = [
   {
