@@ -1,5 +1,5 @@
 env           = "uat"
-vault_address = "http://localhost:8200"
+vault_address = "https://vault-st-klu.starixuat.com"
 
 application_aws_assume_role = "arn:aws:iam::584102114761:role/lumi-prod-vault-role-v1"
 
