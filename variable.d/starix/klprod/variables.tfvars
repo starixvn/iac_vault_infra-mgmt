@@ -9,7 +9,7 @@ bound_gitlab_project_id = "3117,3118"
 bound_gitlab_ref        = "main,klprod,deploy_*_klprod"
 bound_gitlab_ref_type   = "branch,tag"
 
-############
+###########
 ########### mount
 vault_mount = [
   {
@@ -97,6 +97,11 @@ vault_team = [
   },
   {
     name = "legion",
+  },
+  {
+    name              = "wabisabi",
+    ex_admin_policies = ["db_reviewer", ]
+    # ex_ro_policies = "",
   },
 ]
 
