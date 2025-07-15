@@ -1,5 +1,5 @@
 env           = "klprod"
-vault_address = "https://vn-st-klp-vault.byb6181.com"
+vault_address = "https://vault-st-klp.starixplay.com"
 
 application_aws_assume_role = "arn:aws:iam::584102114761:role/lumi-prod-vault-role-v1"
 
