@@ -173,6 +173,10 @@ vault_users = [
     name = "kos.nguyen",
     team = "legion",
   },
+  {
+    name = "jonathan.doan",
+    team = "wabisabi",
+  },
 ]
 
 vault_users_readonly = []
