@@ -87,7 +87,11 @@ gitlab_pipeline_roles = [
     allowed_ref_types = ["branch", "tag"]
     token_policies    = []
     token_ttl         = 900
-    additional_paths = [
+    additional_paths = [\
+      {
+        path         = "sys/auth"
+        capabilities = ["list"]
+      },
       {
         path         = "sys/auth/approle"
         capabilities = ["read", "create", "update", "delete"]
