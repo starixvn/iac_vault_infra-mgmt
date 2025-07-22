@@ -4,8 +4,8 @@ region        = "ap-northeast-1"
 
 # 3117: https://gitlab.nexdev.net/iac/vault/dba-policy-mgmt
 # 3118: https://gitlab.nexdev.net/iac/vault/infra-mgmt
-bound_gitlab_project_id = "3117,3118"
-bound_gitlab_ref        = "main,dev,deploy_*_dev"
+bound_gitlab_project_id = "3118"
+bound_gitlab_ref        = "main,deploy_vault_infra-mgmt_*"
 bound_gitlab_ref_type   = "branch,tag"
 
 ###########
@@ -74,6 +74,28 @@ kube_auth_backends = [
         sa_name      = ["vault-snapshot", ]
         sa_namespace = ["vault-dev", ]
         policies     = ["raft-snapshot", ]
+      },
+    ]
+  },
+]
+
+########### Gitlab Pipeline Access Control ############
+gitlab_pipeline_roles = [
+  {
+    name              = "vault-dba-policy-mgmt"
+    project_ids       = ["3117"] #https://gitlab.nexdev.net/iac/vault/dba-policy-mgmt
+    allowed_branches  = ["main", "deploy_vault_dba-policy-mgmt_*"]
+    allowed_ref_types = ["branch", "tag"]
+    token_policies    = []
+    token_ttl         = 900
+    additional_paths = [
+      {
+        path         = "auth/approle/role/*"
+        capabilities = ["read", "list", "create", "update", "delete"]
+      },
+      {
+        path         = "sys/policies/acl/p-mssql-*"
+        capabilities = ["create", "update", "read", "delete"]
       },
     ]
   },
