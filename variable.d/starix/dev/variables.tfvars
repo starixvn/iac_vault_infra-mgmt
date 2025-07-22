@@ -89,8 +89,8 @@ gitlab_pipeline_roles = [
     token_ttl         = 900
     additional_paths = [
       {
-        path         = "sys/auth"
-        capabilities = ["list"]
+        path         = "sys/auth/approle"
+        capabilities = ["read", "create", "update", "delete"]
       },
       {
         path         = "auth/approle/role/*"
@@ -98,11 +98,11 @@ gitlab_pipeline_roles = [
       },
       {
         path         = "sys/policies/acl/p-mssql-*"
-        capabilities = ["create", "update", "read", "delete"]
+        capabilities = ["read", "create", "update", "delete"]
       },
       {
         path         = "identity/entity/id/*"
-        capabilities = ["create", "update", "read", "delete"]
+        capabilities = ["read", "create", "update", "delete"]
       },
       {
         path         = "/identity/entity-alias/id/*"
