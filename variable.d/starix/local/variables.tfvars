@@ -7,9 +7,8 @@ CIDR_OFFICE                 = ["10.0.0.0/8"]
 application_aws_assume_role = "arn:aws:iam::584102114761:role/lumi-local-vault-role-v1" #required
 
 # 3061: https://gitlab.nexdev.net/iac/eac
-# 3117: https://gitlab.nexdev.net/iac/vault/dba-policy-mgmt
 # 3118: https://gitlab.nexdev.net/iac/vault/infra-mgmt
-bound_gitlab_project_id = "3061,3117,3118"
+bound_gitlab_project_id = "3061,3118"
 bound_gitlab_ref        = "main,dev,aws,local,deploy_aws_*,deploy_*_local"
 bound_gitlab_ref_type   = "branch,tag"
 # bound_gitlab_ref        = "*"
@@ -192,7 +191,7 @@ gitlab_pipeline_roles = [
   {
     name              = "rancher-access-mgmt"
     project_ids       = ["3155"] #https://gitlab.nexdev.net/iac/rancher/access-mgmt
-    allowed_branches  = ["main", "deploy_Rancher_access-mgmt_*"]
+    allowed_branches  = ["main", "deploy_rancher_access-mgmt_*"]
     allowed_ref_types = ["branch", "tag"]
     token_policies    = []
     token_ttl         = 900
@@ -207,7 +206,7 @@ gitlab_pipeline_roles = [
   {
     name              = "kubernetes-argo-app"
     project_ids       = ["3157"] #https://gitlab.nexdev.net/iac/kubernetes/argo-app
-    allowed_branches  = ["main", "deploy_Kubernetes_argo-app_*"]
+    allowed_branches  = ["main", "deploy_kubernetes_argo-app_*"]
     allowed_ref_types = ["branch", "tag"]
     token_policies    = []
     token_ttl         = 900
@@ -222,7 +221,22 @@ gitlab_pipeline_roles = [
   {
     name              = "opensearch-datastream-mgmt"
     project_ids       = ["3156"] #https://gitlab.nexdev.net/iac/opensearch
-    allowed_branches  = ["main", "deploy_Opensearch_datastream-management_*"]
+    allowed_branches  = ["main", "deploy_opensearch_datastream-management_*"]
+    allowed_ref_types = ["branch", "tag"]
+    token_policies    = []
+    token_ttl         = 900
+    # Additional paths for specific needs
+    additional_paths = [
+      {
+        path         = "nexops/data/automation/Opensearch/datastream-management/*"
+        capabilities = ["read"]
+      },
+    ]
+  },
+  {
+    name              = "vault-dba-policy-mgmt"
+    project_ids       = ["3117"] #https://gitlab.nexdev.net/iac/vault/dba-policy-mgmt
+    allowed_branches  = ["main", "deploy_vault_dba-policy-mgmt_*"]
     allowed_ref_types = ["branch", "tag"]
     token_policies    = []
     token_ttl         = 900
