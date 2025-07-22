@@ -2,7 +2,6 @@ env           = "dev"
 vault_address = "https://vault-dev.nexdev.net"
 region        = "ap-northeast-1"
 
-# 3117: https://gitlab.nexdev.net/iac/vault/dba-policy-mgmt
 # 3118: https://gitlab.nexdev.net/iac/vault/infra-mgmt
 bound_gitlab_project_id = "3118"
 bound_gitlab_ref        = "main,deploy_vault_infra-mgmt_*"
