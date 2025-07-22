@@ -15,19 +15,18 @@ resource "vault_jwt_auth_backend" "gitlab" {
 
 # Dynamic JWT Auth Roles
 resource "vault_jwt_auth_backend_role" "pipeline_roles" {
-  for_each       = { for role in var.pipeline_roles : role.name => role }
-  backend        = vault_jwt_auth_backend.gitlab.path
-  role_type      = "jwt"
-  role_name      = each.key
-  token_policies = concat(each.value.token_policies, [vault_policy.pipeline_policies[each.key].name])
-  token_ttl      = each.value.token_ttl
-
+  for_each        = { for role in var.pipeline_roles : role.name => role }
+  backend         = vault_jwt_auth_backend.gitlab.path
+  role_type       = "jwt"
+  role_name       = each.key
+  token_policies  = concat(each.value.token_policies, [vault_policy.pipeline_policies[each.key].name])
+  token_ttl       = each.value.token_ttl
+  bound_audiences = [var.gitlab_domain]
   bound_claims = {
     project_id = join(",", each.value.project_ids)
     ref        = join(",", each.value.allowed_branches)
     ref_type   = join(",", each.value.allowed_ref_types)
   }
-
   user_claim = "user_email"
 }
 
