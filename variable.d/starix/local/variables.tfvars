@@ -12,7 +12,7 @@ application_aws_assume_role = "arn:aws:iam::584102114761:role/lumi-local-vault-r
 # 3110: https://gitlab.nexdev.net/iac/rancher
 # 3117: https://gitlab.nexdev.net/iac/vault/dba-policy-mgmt
 # 3118: https://gitlab.nexdev.net/iac/vault/infra-mgmt
-bound_gitlab_project_id = "3061,3083,3096,3110,3117,3118"
+bound_gitlab_project_id = "3061,3083,3096,3117,3118"
 bound_gitlab_ref        = "main,dev,aws,local,deploy_aws_*,deploy_*_local"
 bound_gitlab_ref_type   = "branch,tag"
 # bound_gitlab_ref        = "*"
@@ -190,7 +190,24 @@ aws_secret_backend = [
   # },
 ]
 
-
+########### Gitlab Pipeline Access Control ############
+gitlab_pipeline_roles = [
+  {
+    name              = "rancher-access-mgmt"
+    project_ids       = ["3110"] #https://gitlab.nexdev.net/iac/rancher
+    allowed_branches  = ["main", "deploy_Rancher_access-mgmt_*"]
+    allowed_ref_types = ["branch", "tag"]
+    token_policies    = []
+    token_ttl         = 900
+    # Additional paths for specific needs
+    additional_paths = [
+      {
+        path         = "nexops/data/automation/rancher/*"
+        capabilities = ["read"]
+      },
+    ]
+  },
+]
 
 #####################################
 vault_team = [

@@ -181,6 +181,33 @@ variable "aws_secret_backend" {
   default     = [{}]
 }
 
+########### Gitlab Pipeline Access Control ############
+variable "gitlab_pipeline_jwt_auth_backend" {
+  description = "Authentication Backend for gitlab Pipeline Access"
+  type        = string
+  default     = "jwt-gitlab"
+}
+
+variable "gitlab_pipeline_roles" {
+  description = "List of role objects for gitlab pipeline access vault secrets"
+  type = list(object({
+    name              = string
+    project_ids       = list(string)
+    allowed_branches  = list(string)
+    allowed_ref_types = list(string)
+    token_policies    = list(string)
+    token_ttl         = number
+    # New policy customization fields
+    custom_policy_content = optional(string, "")
+    additional_paths = optional(list(object({
+      path         = string
+      capabilities = list(string)
+    })), [])
+  }))
+  default = []
+}
+
+
 /**** userpass Entity Alias ****/
 ### the username/password will be created via the 
 ### vault UI, but the mapping of username to a vault 
