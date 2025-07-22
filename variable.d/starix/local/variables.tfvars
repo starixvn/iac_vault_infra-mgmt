@@ -191,7 +191,7 @@ aws_secret_backend = [
 gitlab_pipeline_roles = [
   {
     name              = "rancher-access-mgmt"
-    project_ids       = ["3110"] #https://gitlab.nexdev.net/iac/rancher
+    project_ids       = ["3155"] #https://gitlab.nexdev.net/iac/rancher/access-mgmt
     allowed_branches  = ["main", "deploy_Rancher_access-mgmt_*"]
     allowed_ref_types = ["branch", "tag"]
     token_policies    = []
@@ -221,7 +221,7 @@ gitlab_pipeline_roles = [
   },
   {
     name              = "opensearch-datastream-mgmt"
-    project_ids       = ["3083"] #https://gitlab.nexdev.net/iac/opensearch
+    project_ids       = ["3156"] #https://gitlab.nexdev.net/iac/opensearch
     allowed_branches  = ["main", "deploy_Opensearch_datastream-management_*"]
     allowed_ref_types = ["branch", "tag"]
     token_policies    = []
