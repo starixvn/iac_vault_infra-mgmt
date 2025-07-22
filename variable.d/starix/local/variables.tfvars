@@ -206,7 +206,7 @@ gitlab_pipeline_roles = [
   },
   {
     name              = "kubernetes-argo-app"
-    project_ids       = ["3083"] #https://gitlab.nexdev.net/iac/kubernetes
+    project_ids       = ["3157"] #https://gitlab.nexdev.net/iac/kubernetes/argo-app
     allowed_branches  = ["main", "deploy_Kubernetes_argo-app_*"]
     allowed_ref_types = ["branch", "tag"]
     token_policies    = []
