@@ -91,7 +91,7 @@ gitlab_pipeline_roles = [
     additional_paths = [
       {
         path         = "sys/auth"
-        capabilities = ["list"]
+        capabilities = ["read"]
       },
       {
         path         = "sys/auth/approle"
