@@ -98,9 +98,15 @@ kube_auth_backends = [
 
 #####################################
 vault_team = [
-  "nexops",
-  "pentagon",
-  "sg",
+  {
+    name = "nexops",
+  },
+  {
+    name = "pentagon",
+  },
+  {
+    name = "sg",
+  },
 ]
 
 ## Vault Admin Users
