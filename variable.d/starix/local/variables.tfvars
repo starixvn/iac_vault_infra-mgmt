@@ -13,7 +13,7 @@ bound_gitlab_ref        = "main,dev,aws,local,deploy_aws_*,deploy_*_local"
 bound_gitlab_ref_type   = "branch,tag"
 # bound_gitlab_ref        = "*"
 
-#########
+########
 ########### mount
 vault_mount = [
   {

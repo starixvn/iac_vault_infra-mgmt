@@ -27,7 +27,8 @@ resource "vault_jwt_auth_backend_role" "pipeline_roles" {
     ref        = join(",", each.value.allowed_branches)
     ref_type   = join(",", each.value.allowed_ref_types)
   }
-  user_claim = "user_email"
+  user_claim        = "user_email"
+  bound_claims_type = "glob"
 }
 
 # Create policy documents for each role using template
