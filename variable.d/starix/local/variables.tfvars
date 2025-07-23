@@ -240,11 +240,30 @@ gitlab_pipeline_roles = [
     allowed_ref_types = ["branch", "tag"]
     token_policies    = []
     token_ttl         = 900
-    # Additional paths for specific needs
     additional_paths = [
       {
-        path         = "nexops/data/automation/Opensearch/datastream-management/*"
-        capabilities = ["read"]
+        path         = "sys/auth"
+        capabilities = ["list"]
+      },
+      {
+        path         = "sys/auth/approle"
+        capabilities = ["read", "create", "update", "delete"]
+      },
+      {
+        path         = "auth/approle/role/*"
+        capabilities = ["read", "list", "create", "update", "delete"]
+      },
+      {
+        path         = "sys/policies/acl/p-mssql-*"
+        capabilities = ["read", "create", "update", "delete"]
+      },
+      {
+        path         = "identity/entity/id/*"
+        capabilities = ["read", "create", "update", "delete"]
+      },
+      {
+        path         = "/identity/entity-alias/id/*"
+        capabilities = ["create", "update", "read", "delete"]
       },
     ]
   },

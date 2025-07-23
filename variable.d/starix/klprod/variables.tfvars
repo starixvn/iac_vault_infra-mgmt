@@ -3,9 +3,8 @@ vault_address = "https://vault-st-klp.starixplay.com"
 
 application_aws_assume_role = "arn:aws:iam::584102114761:role/lumi-prod-vault-role-v1"
 
-# 3117: https://gitlab.nexdev.net/iac/vault/dba-policy-mgmt
 # 3118: https://gitlab.nexdev.net/iac/vault/infra-mgmt
-bound_gitlab_project_id = "3117,3118"
+bound_gitlab_project_id = "3118"
 bound_gitlab_ref        = "main,klprod,deploy_*_klprod"
 bound_gitlab_ref_type   = "branch,tag"
 
@@ -73,6 +72,44 @@ kube_auth_backends = [
         sa_name      = ["vault-snapshot", ]
         sa_namespace = ["vault", ]
         policies     = ["raft-snapshot", ]
+      },
+    ]
+  },
+]
+
+########### Gitlab Pipeline Access Control ############
+gitlab_pipeline_roles = [
+  {
+    name              = "vault-dba-policy-mgmt"
+    project_ids       = ["3117"] #https://gitlab.nexdev.net/iac/vault/dba-policy-mgmt
+    allowed_branches  = ["main", "deploy_vault_dba-policy-mgmt_*"]
+    allowed_ref_types = ["branch", "tag"]
+    token_policies    = []
+    token_ttl         = 900
+    additional_paths = [
+      {
+        path         = "sys/auth"
+        capabilities = ["list"]
+      },
+      {
+        path         = "sys/auth/approle"
+        capabilities = ["read", "create", "update", "delete"]
+      },
+      {
+        path         = "auth/approle/role/*"
+        capabilities = ["read", "list", "create", "update", "delete"]
+      },
+      {
+        path         = "sys/policies/acl/p-mssql-*"
+        capabilities = ["read", "create", "update", "delete"]
+      },
+      {
+        path         = "identity/entity/id/*"
+        capabilities = ["read", "create", "update", "delete"]
+      },
+      {
+        path         = "/identity/entity-alias/id/*"
+        capabilities = ["create", "update", "read", "delete"]
       },
     ]
   },
