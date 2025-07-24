@@ -6,9 +6,8 @@ vault_address = "https://vault.nexdev.net"
 CIDR_OFFICE                 = ["10.0.0.0/8"]
 application_aws_assume_role = "arn:aws:iam::584102114761:role/lumi-local-vault-role-v1" #required
 
-# 3061: https://gitlab.nexdev.net/iac/eac
 # 3118: https://gitlab.nexdev.net/iac/vault/infra-mgmt
-bound_gitlab_project_id = "3061,3118"
+bound_gitlab_project_id = "3118"
 bound_gitlab_ref        = "main,dev,aws,local,deploy_aws_*,deploy_*_local"
 bound_gitlab_ref_type   = "branch,tag"
 # bound_gitlab_ref        = "*"
@@ -188,6 +187,14 @@ aws_secret_backend = [
 
 ########### Gitlab Pipeline Access Control ############
 gitlab_pipeline_roles = [
+  {
+    name              = "aws-general"
+    project_ids       = ["3061"] #https://gitlab.nexdev.net/iac/eac
+    allowed_branches  = ["*"]
+    allowed_ref_types = ["branch", "tag"]
+    token_policies    = []
+    token_ttl         = 900
+  },
   {
     name              = "rancher-access-mgmt"
     project_ids       = ["3155"] #https://gitlab.nexdev.net/iac/rancher/access-mgmt
