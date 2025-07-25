@@ -70,7 +70,7 @@ kube_auth_backends = [
       {
         role_name    = "vault-snapshot"
         sa_name      = ["vault-snapshot", ]
-        sa_namespace = ["vault", ]
+        sa_namespace = ["tf-stx-vault", ]
         policies     = ["raft-snapshot", ]
       },
     ]
