@@ -216,13 +216,13 @@ audit_devices = [
       file_path = "stdout"
     }
   },
-  # {
-  #   type = "socket"
-  #   options = {
-  #     address              = "logstash-starix-k3sprod-logstash.logging.svc:5064"
-  #     socket_type          = "tcp"
-  #     elide_list_responses = "true"
-  #     description          = "logstash socket"
-  #   }
-  # }
+  {
+    type = "socket"
+    options = {
+      address              = "logstash-atx-k3sprod-logstash.logging.svc:5077"
+      socket_type          = "tcp"
+      elide_list_responses = "true"
+      description          = "logstash socket"
+    }
+  }
 ]
