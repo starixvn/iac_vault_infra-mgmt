@@ -215,7 +215,7 @@ audit_devices = [
   {
     type = "socket"
     options = {
-      address              = "logstash-starix-k3suat-logstash.logging.svc:5064"
+      address              = "logstash-atx-k3suat-logstash.logging.svc:5064"
       socket_type          = "tcp"
       elide_list_responses = "true"
       description          = "logstash socket"
