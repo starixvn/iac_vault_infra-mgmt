@@ -282,6 +282,11 @@ vault_team = [
     name = "nexops",
   },
   {
+    name              = "itnw",
+    ex_admin_policies = ["cert_updater", ]
+    # ex_ro_policies = "",
+  },
+  {
     name = "pontus",
   },
   {
@@ -305,8 +310,6 @@ vault_admin_users = [
   "ken.nguyen",
   "josh.tran",
   "dennis.le",
-  "jacob.phan",
-  "sol.le",
 ]
 ### ALL Vault Users
 vault_users = [
@@ -325,6 +328,11 @@ vault_users = [
   {
     name = "josh.tran",
     team = "nexops",
+  },
+  #### ITNW
+  {
+    name = "rio.dang",
+    team = "itnw",
   },
   #### DBA
   {
