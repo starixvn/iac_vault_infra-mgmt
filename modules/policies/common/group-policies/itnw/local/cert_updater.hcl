@@ -2,6 +2,10 @@ path "nexops/" {
   capabilities = ["read"]
 }
 
+path "nexops/metadata" {
+  capabilities = ["list"]
+}
+
 path "nexops/data/certs" {
   capabilities = ["read", "list"]
 }
