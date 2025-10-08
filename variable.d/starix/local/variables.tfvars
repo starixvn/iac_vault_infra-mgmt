@@ -235,7 +235,7 @@ gitlab_pipeline_roles = [
     # Additional paths for specific needs
     additional_paths = [
       {
-        path         = "nexops/data/automation/Opensearch/detection-response/*"
+        path         = "nexops/data/automation/Opensearch/datastream-management/*"
         capabilities = ["read"]
       },
     ]
@@ -250,7 +250,7 @@ gitlab_pipeline_roles = [
     # Additional paths for specific needs
     additional_paths = [
       {
-        path         = "nexops/data/automation/Opensearch/datastream-management/*"
+        path         = "nexops/data/automation/Opensearch/detection-response/*"
         capabilities = ["read"]
       },
     ]
