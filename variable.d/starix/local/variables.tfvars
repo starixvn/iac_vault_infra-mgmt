@@ -235,6 +235,21 @@ gitlab_pipeline_roles = [
     # Additional paths for specific needs
     additional_paths = [
       {
+        path         = "nexops/data/automation/Opensearch/detection-response/*"
+        capabilities = ["read"]
+      },
+    ]
+  },
+  {
+    name              = "opensearch-detection-response"
+    project_ids       = ["3282"] #https://gitlab.nexdev.net/iac/opensearch/detection-response
+    allowed_branches  = ["main", "deploy_opensearch_detection-response_*"]
+    allowed_ref_types = ["branch", "tag"]
+    token_policies    = []
+    token_ttl         = 900
+    # Additional paths for specific needs
+    additional_paths = [
+      {
         path         = "nexops/data/automation/Opensearch/datastream-management/*"
         capabilities = ["read"]
       },
