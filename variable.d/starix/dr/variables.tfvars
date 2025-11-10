@@ -1,16 +1,15 @@
-env           = "kldr"
-vault_address = "https://vn-st-vault.byb6181.com"
+env           = "dr"
+vault_address = "https://vault-st.dr.starixplay.com"
 
-CIDR_OFFICE                 = ["10.0.0.0/8"]
-application_aws_assume_role = "arn:aws:iam::584102114761:role/lumi-prod-vault-role-v1" #required
+application_aws_assume_role = "arn:aws:iam::584102114761:role/lumi-prod-vault-role-v1"
 
 # 3117: https://gitlab.nexdev.net/iac/vault/dba-policy-mgmt
 # 3118: https://gitlab.nexdev.net/iac/vault/infra-mgmt
 bound_gitlab_project_id = "3117,3118"
-bound_gitlab_ref        = "main,dev,kldr,deploy_*_kldr"
+bound_gitlab_ref        = "main,dr,deploy_*_dr"
 bound_gitlab_ref_type   = "branch,tag"
 
-###########
+#############
 ########### mount
 vault_mount = [
   {
@@ -176,7 +175,7 @@ vault_users_readonly = []
 ############### Demo 
 vault_generic_secret = []
 
-# gitlab_domain               = "https://gitlab.nexdev.net"
+# gitlab_domain               = "gitlab.nexdev.net"
 
 ################ AUDIT DEVICE ################
 audit_devices = [
@@ -189,10 +188,10 @@ audit_devices = [
   # {
   #   type = "socket"
   #   options = {
-  #     address     = "logstash-starix-k3sprod-logstash.logging.svc:5064"
-  #     socket_type = "tcp"
+  #     address              = "logstash-starix-k3sprod-logstash.logging.svc:5064"
+  #     socket_type          = "tcp"
   #     elide_list_responses = "true"
-  #     description = "logstash socket"
+  #     description          = "logstash socket"
   #   }
   # }
 ]
