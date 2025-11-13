@@ -54,6 +54,21 @@ polices = [
 ########### ROLE for System/App
 roles = []
 
+########### AUTH ROLE for Kubernetes auth method ############
+kube_auth_backends = [
+  {
+    path = "kubernetes",
+    roles = [
+      {
+        role_name    = "vault-snapshot"
+        sa_name      = ["vault-snapshot", ]
+        sa_namespace = ["tf-stx-vault", ]
+        policies     = ["raft-snapshot", ]
+      },
+    ]
+  },
+]
+
 ########### Gitlab Pipeline Access Control ############
 gitlab_pipeline_roles = [
   {
