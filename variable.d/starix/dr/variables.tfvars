@@ -54,25 +54,39 @@ polices = [
 ########### ROLE for System/App
 roles = []
 
-########### AUTH ROLE for Kubernetes auth method ############
-kubernetes_auth_role = [
+########### Gitlab Pipeline Access Control ############
+gitlab_pipeline_roles = [
   {
-    role_name    = "vault-snapshot",
-    sa_name      = "vault-snapshot",
-    sa_namespace = "vault",
-    policies     = ["raft-snapshot", ],
-  },
-]
-
-kube_auth_backends = [
-  {
-    path = "kubernetes",
-    roles = [
+    name              = "vault-dba-policy-mgmt"
+    project_ids       = ["3117"] #https://gitlab.nexdev.net/iac/vault/dba-policy-mgmt
+    allowed_branches  = ["main", "deploy_vault_dba-policy-mgmt_*"]
+    allowed_ref_types = ["branch", "tag"]
+    token_policies    = []
+    token_ttl         = 900
+    additional_paths = [
       {
-        role_name    = "vault-snapshot"
-        sa_name      = ["vault-snapshot", ]
-        sa_namespace = ["vault", ]
-        policies     = ["raft-snapshot", ]
+        path         = "sys/auth"
+        capabilities = ["read"]
+      },
+      {
+        path         = "sys/auth/approle"
+        capabilities = ["read", "create", "update", "delete"]
+      },
+      {
+        path         = "auth/approle/role/*"
+        capabilities = ["read", "list", "create", "update", "delete"]
+      },
+      {
+        path         = "sys/policies/acl/p-mssql-*"
+        capabilities = ["read", "create", "update", "delete"]
+      },
+      {
+        path         = "identity/entity/id/*"
+        capabilities = ["read", "create", "update", "delete"]
+      },
+      {
+        path         = "/identity/entity-alias/id/*"
+        capabilities = ["create", "update", "read", "delete"]
       },
     ]
   },
