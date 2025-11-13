@@ -31,27 +31,6 @@ The `infra-mgmt` directory manages security, authentication, authorization, and 
 - **CI/CD**  
   - `.gitlab-ci.yml`: Defines automated pipelines for infrastructure validation, deployment, and management.
 
-## General Workflow
-
-1. **Variable & Backend Management**
-   - Select appropriate variables by organization and environment from `variable.d`.
-   - Configure backend for state storage.
-
-2. **Provider & Resource Initialization**
-   - Define providers (AWS, Vault, ...).
-   - Initialize resources: IAM, policies, roles, transit keys, groups, users, ...
-
-3. **Policy Application**
-   - Apply policies for each group, environment, and service.
-   - Use modules and templates for dynamic policy generation.
-
-4. **Validation & Deployment**
-   - CI/CD pipeline automatically validates, plans, and applies changes.
-   - Manages resource and policy lifecycle.
-
-5. **Management & Monitoring**
-   - Audit, backup, token renewal, snapshot, user and permission management.
-
 ## Directory Structure
 
 ### Top-Level Files
