@@ -256,6 +256,16 @@ gitlab_pipeline_roles = [
     ]
   },
   {
+    name              = "aws-cloudfront-s3-cdn"
+    project_ids       = ["3508"] #https://gitlab.nexdev.net/iac/AWS/cloudfront-s3-cdn
+    allowed_branches  = ["main", "deploy_aws_cloudfront-s3-cdn_*"]
+    allowed_ref_types = ["branch", "tag"]
+    token_policies    = []
+    token_ttl         = 900
+    # Additional paths for specific needs
+    additional_paths = []
+  },
+  {
     name              = "vault-dba-policy-mgmt"
     project_ids       = ["3117"] #https://gitlab.nexdev.net/iac/vault/dba-policy-mgmt
     allowed_branches  = ["main", "deploy_vault_dba-policy-mgmt_*"]
