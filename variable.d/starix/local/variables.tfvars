@@ -141,7 +141,7 @@ kube_auth_backends = [
       {
         role_name    = "cert-reader"
         sa_name      = ["vault-cert-injector", ]
-        sa_namespace = ["haproxy-ingress", ]
+        sa_namespace = ["haproxy-ingress", "abra-ingress", "mew-ingress"]
         policies     = ["cert-reader", ]
       },
     ]
@@ -152,7 +152,7 @@ kube_auth_backends = [
       {
         role_name    = "cert-reader"
         sa_name      = ["vault-cert-injector", ]
-        sa_namespace = ["haproxy-ingress", "abra-ingress", "mew-ingress"]
+        sa_namespace = ["haproxy-ingress", ]
         policies     = ["cert-reader", ]
       },
     ]
